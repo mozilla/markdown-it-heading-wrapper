@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mozilla/markdown-it-heading-wrapper.svg?branch=main)](https://travis-ci.org/mozilla/markdown-it-heading-wrapper)
+
 # markdown-it-heading-wrapper
 
 A plugin very much inspired by and based on [markdown-it-header-sections](https://github.com/arve0/markdown-it-header-sections),
