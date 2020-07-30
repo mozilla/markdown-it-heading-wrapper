@@ -1,5 +1,5 @@
 const { stripIndent } = require('common-tags');
-const md = require("markdown-it");
+const md = require('markdown-it');
 
 let markdown;
 
@@ -263,13 +263,13 @@ describe('Other plugins', () => {
     markdown = md({
       html: true,
     })
-    .use(require('markdown-it-anchor'))
-    .use(require('./index.js'), {
-      h2: {
-        before: '<section><!-- open h2 section -->',
-        after: '</section><!-- close h2 section -->',
-      },
-    });
+      .use(require('markdown-it-anchor'))
+      .use(require('./index.js'), {
+        h2: {
+          before: '<section><!-- open h2 section -->',
+          after: '</section><!-- close h2 section -->',
+        },
+      });
   });
 
   it('wraps headings without causing problems with other plugins', () => {

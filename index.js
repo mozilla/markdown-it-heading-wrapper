@@ -1,11 +1,11 @@
-function headingWrapperPlugin (md, options) {
+function headingWrapperPlugin(md, options) {
   const opts = Object.assign({}, options);
 
   function lastItem(arr) {
-    return arr[arr.length-1];
+    return arr[arr.length - 1];
   }
 
-  function headingWrapper (state){
+  function headingWrapper(state) {
     const tokens = [];
     const sections = [];
     let token;
@@ -15,17 +15,20 @@ function headingWrapperPlugin (md, options) {
     function getWrapperOpen(headerTag) {
       const token = new Token('heading_wrapper_open', '', 1);
       token.heading_wrapper_relation = headerTag;
-      return token
+      return token;
     }
 
     function getWrapperClose(headerTag) {
       const token = new Token('heading_wrapper_close', '', -1);
       token.heading_wrapper_relation = headerTag;
-      return token
+      return token;
     }
 
     function closeOpenWrappersToNesting(nestingLevel) {
-      while (sections.length && nestingLevel < lastItem(sections).nestingLevel) {
+      while (
+        sections.length &&
+        nestingLevel < lastItem(sections).nestingLevel
+      ) {
         const poppedSection = sections.pop();
         if (opts[poppedSection.headerTag]) {
           tokens.push(getWrapperClose(poppedSection.headerTag));
@@ -34,7 +37,10 @@ function headingWrapperPlugin (md, options) {
     }
 
     function closeOpenWrappers(section) {
-      while (sections.length && section.headerTag.charAt(1) <= lastItem(sections).headerTag.charAt(1)) {
+      while (
+        sections.length &&
+        section.headerTag.charAt(1) <= lastItem(sections).headerTag.charAt(1)
+      ) {
         const poppedSection = sections.pop();
         if (opts[poppedSection.headerTag]) {
           tokens.push(getWrapperClose(poppedSection.headerTag));
@@ -44,7 +50,7 @@ function headingWrapperPlugin (md, options) {
 
     function closeAllOpenWrappers(section) {
       let poppedSection;
-      while (poppedSection = sections.pop()) {
+      while ((poppedSection = sections.pop())) {
         if (opts[poppedSection.headerTag]) {
           tokens.push(getWrapperClose(poppedSection.headerTag));
         }
@@ -60,7 +66,7 @@ function headingWrapperPlugin (md, options) {
 
       closeOpenWrappersToNesting(nestingLevel);
 
-      if (token.type === 'heading_open'){
+      if (token.type === 'heading_open') {
         const section = {
           headerTag: token.tag,
           nestingLevel: nestingLevel,
@@ -80,12 +86,24 @@ function headingWrapperPlugin (md, options) {
     state.tokens = tokens;
   }
 
-  md.renderer.rules.heading_wrapper_open = function (tokens, idx, options, env, self) {
+  md.renderer.rules.heading_wrapper_open = function (
+    tokens,
+    idx,
+    options,
+    env,
+    self
+  ) {
     const token = tokens[idx];
     return `${opts[token.heading_wrapper_relation].before}\n`;
   };
 
-  md.renderer.rules.heading_wrapper_close = function (tokens, idx, options, env, self) {
+  md.renderer.rules.heading_wrapper_close = function (
+    tokens,
+    idx,
+    options,
+    env,
+    self
+  ) {
     const token = tokens[idx];
     return `${opts[token.heading_wrapper_relation].after}\n`;
   };

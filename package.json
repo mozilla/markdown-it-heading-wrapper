@@ -4,7 +4,9 @@
   "description": "A markdown-it plugin for wrapping headings in markdown in arbitrary markup.",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "prettier": "prettier --write '**'",
+    "prettier-ci": "prettier -c '**'"
   },
   "author": "",
   "license": "MPL-2.0",
@@ -12,6 +14,7 @@
     "common-tags": "^1.8.0",
     "jest": "^26.1.0",
     "markdown-it": "^11.0.0",
-    "markdown-it-anchor": "^5.3.0"
+    "markdown-it-anchor": "^5.3.0",
+    "prettier": "^2.0.5"
   }
 }
