@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/mozilla/markdown-it-heading-wrapper.svg?branch=main)](https://travis-ci.org/mozilla/markdown-it-heading-wrapper)
-
 # markdown-it-heading-wrapper
+
+[![CircleCI](https://circleci.com/gh/mozilla/markdown-it-heading-wrapper.svg?style=svg)](https://circleci.com/gh/mozilla/eslint-config-amo)
 
 A plugin very much inspired by and based on [markdown-it-header-sections](https://github.com/arve0/markdown-it-header-sections),
 albeit in this case it's designed to allow for arbitrary markup wrappers
