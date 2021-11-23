@@ -11,7 +11,7 @@
   "author": "",
   "license": "MPL-2.0",
   "devDependencies": {
-    "common-tags": "1.8.0",
+    "common-tags": "1.8.2",
     "jest": "26.6.3",
     "markdown-it": "12.2.0",
     "markdown-it-anchor": "5.3.0",
